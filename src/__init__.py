@@ -1,0 +1,1 @@
+from src.first import chck_res
