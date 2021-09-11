@@ -17,7 +17,8 @@ class chck_res:
         self.lat=lat
         self.lng=lng
         self.restro_data={}
-
+    def collect(self):
+        return len(self.restro_data)
     def crt_url_prm(self,url,prm):
         lst=[]
         for i in prm:
