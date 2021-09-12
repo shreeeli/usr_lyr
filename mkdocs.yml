@@ -1,0 +1,12 @@
+site_name: My Docs
+theme:
+  name: material
+  palette:
+    primary: purple
+    accent: cyan
+  font:
+    text: Ubuntu
+markdown_extensions:
+  - pymdownx.highlight:
+      linenums: true
+  - pymdownx.superfences
