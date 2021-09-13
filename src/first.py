@@ -1,6 +1,8 @@
 import requests
 import json
 import pandas as pd
+from util.util import crt_url_prm
+# from comm.use_request import get_data
 
 def rating_ex(x):
     return x['avgRating']
@@ -19,16 +21,7 @@ class chck_res:
         self.restro_data={}
     def collect(self):
         return len(self.restro_data)
-    def crt_url_prm(self,url,prm):
-        lst=[]
-        for i in prm:
-            ky=i
-            vl=prm[i]
-            lst.append(str(ky)+"="+str(vl))
-        prm_str='&'.join([str(elem) for elem in lst])   
-        url=url+"?"+prm_str   
-        return (url)  
-    
+
     def crt_url (self,typ,strng):
         if (typ=="suggest"):
             url=self.url_m+"/"+"suggest"
@@ -45,7 +38,7 @@ class chck_res:
                 "lng":self.lng,
                 "str":strng
                 }
-        return(self.crt_url_prm (url,prm))    
+        return(crt_url_prm (url,prm))    
         
     def get_data (self,typ,strng):
         payload=""
@@ -108,3 +101,12 @@ def answer_me (strng):
     df_2['costForTwo_flt'] = pd.to_numeric(df_2["costForTwo"], downcast="float")
     df_2=df_2.drop(columns=['fll','srch','avgRating'],axis=1)
     return df_2.to_html(classes='table table-striped')
+
+
+def main ():
+   rslt= answer_me ("sandwich")
+   print (rslt)
+
+
+if __name__=="__main__":
+    main ()
